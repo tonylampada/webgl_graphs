@@ -5,15 +5,16 @@
 
 	</head>
 	<body>
+		oi
+		<div>
+			<div id="renderHere" style="width:400px; height: 400px; border: solid 1px"></div>
+			<div>
+				<label>bonds</label>
+				<textarea id="bonds"></textarea>
+			</div>
+		</div>
 	</body>
 		<script type="text/javascript">
-    var camera, scene, renderer;
-    var geometry, material, mesh, damesh;
-	var meshes = [];
-	var NODES = 8;
-	var nodes = [];
-	var lines = [];
-	var t = 0;
 	
 	function c2h6(){
 		return [
@@ -43,11 +44,17 @@
 		];
 	}
 	
+	var Q = 1000000, K = 0.1, F = 1, L = 100;
+    var camera, scene, renderer;
+    var material, damesh;
+	var meshes = [];
+	var NODES = 8;
+	var nodes = [];
+	var lines = [];
+	var t = 0;
 	var bonds = c2h6();
 	//var bonds = cube();
 	
-	var Q = 1000000, K = 0.1, F = 1, L = 100;
-
     init();
     animate();
 	
@@ -55,26 +62,24 @@
 		return new THREE.Vector3(-1000 + Math.random() * 2000, -500 + Math.random() * 1000, -500 + Math.random() * 1000)
 	}
 	
-	
     function init() {
 
-        camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+    	var rh = document.getElementById('renderHere')
+
+        camera = new THREE.PerspectiveCamera( 75, 400 / 400, 1, 10000 );
         camera.position.z = 1000;
 
         scene = new THREE.Scene();
 
-        //geometry = new THREE.CubeGeometry( 200, 200, 200 );
-		material = new THREE.MeshNormalMaterial( { color: 0xff0000, wireframe: false } );
-		var line_material = new THREE.LineBasicMaterial({
-			color: 0x0000ff
-		});
+		var node_material = new THREE.MeshNormalMaterial( { color: 0xff0000, wireframe: false } );
+		var line_material = new THREE.LineBasicMaterial({color: 0x0000ff});
 		damesh = new THREE.Mesh(new THREE.Geometry());
 		scene.add( damesh );
 		for(var i=0; i<NODES; i++){
-			geometry = new THREE.SphereGeometry()
+			var geometry = new THREE.SphereGeometry()
 			node = randomNode();
 			nodes.push(node);
-			mesh = new THREE.Mesh( geometry, material );
+			var mesh = new THREE.Mesh( geometry, node_material );
 			mesh.position = node;
 			damesh.add( mesh );
 			meshes.push(mesh)
@@ -83,7 +88,7 @@
 			var bond = bonds[i];
 			n1 = nodes[bond[0]];
 			n2 = nodes[bond[1]];
-			geometry = new THREE.Geometry();
+			var geometry = new THREE.Geometry();
 			geometry.vertices.push(n1);
 			geometry.vertices.push(n2);
 			var line = new THREE.Line(geometry, line_material);
@@ -91,11 +96,10 @@
 			damesh.add(line);
 		}
 
-
         renderer = new THREE.CanvasRenderer();
-        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.setSize( 400,400 );
 
-        document.body.appendChild( renderer.domElement );
+        document.getElementById('renderHere').appendChild( renderer.domElement );
 
     }
 
