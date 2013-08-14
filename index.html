@@ -11,7 +11,6 @@
     var camera, scene, renderer;
     var geometry, material, mesh, damesh;
 	var meshes = [];
-	var NODES = 8;
 	var nodes = [];
 	var lines = [];
 	var t = 0;
@@ -45,6 +44,23 @@
 	}
 	
 	var bonds = c2h6();
+	
+	function calcNodes(){
+		var n = 0
+		for(var i=0; i<bonds.length; i++){
+			var bond = bonds[i];
+			if(bond[0] > n){
+				n = bond[0];
+			}
+			if(bond[1] > n){
+				n = bond[1];
+			}
+		}
+		return n;
+	}
+	
+	var NODES = calcNodes();
+	
 	//var bonds = cube();
 	
 	var Q = 1000000, K = 0.1, F = 1, L = 100;
