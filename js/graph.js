@@ -30,6 +30,7 @@ function _3dgraph(){
         var h = rh.scrollHeight;
 
         camera = new THREE.PerspectiveCamera( 75, w/h, 1, 10000 );
+        console.log('created camera')
         camera.position.z = 1000;
 
         scene = new THREE.Scene();
@@ -68,6 +69,7 @@ function _3dgraph(){
         rh.appendChild( renderer.domElement );
         rh.glcanvas = renderer.domElement;
 
+        return {camera: camera}
     }
 
     function calculateRepulsion(forces){
@@ -188,8 +190,9 @@ function _3dgraph(){
 
     }
 
-    init();
+    var tmp = init();
     animate();
 
+    return tmp;
 }
 
