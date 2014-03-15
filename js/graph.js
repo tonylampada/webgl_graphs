@@ -164,17 +164,16 @@ function _3dgraph(){
     }
 
     function animate() {
-
         // note: three.js includes requestAnimationFrame shim
         requestAnimationFrame( animate );
         for(var i=0; i<NODES; i++){
-            meshes[i].rotation.x += 0.01;
-            meshes[i].rotation.y += 0.01;
-            meshes[i].rotation.z += 0.01;
+            meshes[i].rotation.x += (0.01 * animh.speed);
+            meshes[i].rotation.y += (0.01 * animh.speed);
+            meshes[i].rotation.z += (0.01 * animh.speed);
         }
-        damesh.rotation.x += 0.003;
-        damesh.rotation.y += 0.003;
-        damesh.rotation.z += 0.003;
+        damesh.rotation.x += (0.003 * animh.speed);
+        damesh.rotation.y += (0.003 * animh.speed);
+        damesh.rotation.z += (0.003 * animh.speed);
 
         
         var forces = calculateForces();
@@ -190,9 +189,10 @@ function _3dgraph(){
 
     }
 
-    var tmp = init();
+    var animh = init();
+    animh.speed = 1
     animate();
 
-    return tmp;
+    return animh;
 }
 
