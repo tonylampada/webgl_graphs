@@ -47,7 +47,7 @@
       var bonds;
 
       function go(){
-        bonds = get_bonds(document.getElementById('ta').value );
+        bonds = get_bonds(document.getElementById('ta').value);
         window.animh = _3dgraph();
       }
 
@@ -65,6 +65,13 @@
 
       function slower(){
         window.animh.speed /= 1.1;
+      }
+
+      function save(){
+        var s = document.getElementById('ta').value
+        var h = btoa(s);
+        document.location.hash = "#"+h;
+        window.alert("Structure saved in the URL")
       }
     </script>
 
@@ -101,13 +108,16 @@
           </div>
           <div>
             Zoom
-            <button onclick="zoomin()">+</button>
-            <button onclick="zoomout()">-</button>
+            <button onclick="zoomin()">++++</button>
+            <button onclick="zoomout()">------</button>
           </div>
           <div>
             Speed
-            <button onclick="faster()">+</button>
-            <button onclick="slower()">-</button>
+            <button onclick="faster()">++++</button>
+            <button onclick="slower()">------</button>
+          </div>
+          <div>
+            <button onclick="save()">Save</button>
           </div>
         </div><!--/span-->
         <div class="span9" id="renderHere" style="border: solid 1px; height: 80%">
@@ -117,7 +127,14 @@
   </body>
   <script type="text/javascript">
     var e = document.getElementById('e');
-    document.getElementById('ta').value = structs[e.selectedOptions[0].value];
+    var h = document.location.hash;
+    if(h){
+      h = h.substr(1);
+      document.getElementById('ta').value = atob(h);
+    } else {
+      document.getElementById('ta').value = structs[e.selectedOptions[0].value];
+    }
+
     go();
   </script>
 </html>
