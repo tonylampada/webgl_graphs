@@ -7,6 +7,7 @@
     <script type="text/javascript">
       var structs = {
         fulereno: '0 33\n33 1\n1 34\n34 2\n2 35\n35 3\n4 36\n36 5\n5 37\n37 6\n6 38\n38 7\n7 39\n39 8\n9 32\n32 0\n33 43\n34 44\n35 46\n36 47\n37 49\n38 50\n39 40\n32 41\n43 44\n44 45\n45 46\n46 47\n47 48\n48 49\n49 50\n50 51\n51 40\n40 41\n41 42\n42 43\n42 52\n45 53\n48 53\n51 52\n52 53\n0 11\n11 1\n1 12\n12 2\n2 13\n13 3\n4 14\n14 5\n5 15\n15 6\n6 16\n16 7\n7 17\n17 8\n9 10\n10 0\n11 21\n12 22\n13 24\n14 25\n15 27\n16 28\n17 18\n10 19\n21 22\n22 23\n23 24\n24 25\n25 26\n26 27\n27 28\n28 29\n29 18\n18 19\n19 20\n20 21\n20 30\n23 31\n26 31\n29 30\n30 31\n3 4\n8 9',
+        fulereno2: 'a1 a2\na2 a3\na3 a4\na4 a5\na5 a6\na6 a1\na5 a7\na7 a8\na8 a9\na9 a10\na10 a4\na10 a11\na11 a12\na12 a3\na7 a13\na13 a14\na14 a6\nb1 b2\nb2 b3\nb3 b4\nb4 b5\nb5 b6\nb6 b1\nb5 b7\nb7 b8\nb8 b9\nb9 b10\nb10 b4\nb10 a8\na9 b3\nb7 b13\nb13 b14\nb14 b6\nb14 c3\nc3 c4\nc4 c5\nc5 c6\nc6 b13\nc5 c7\nc7 c8\nc8 c9\nc9 c10\nc10 c4\nc10 c11\nc11 c12\nc12 c3\nc7 c13\nc13 c14\nc14 c6\nd1 d2\nd2 d3\nd3 d4\nd4 d5\nd5 d6\nd6 d1\nd5 d7\nd7 d8\nd8 d9\nd9 d10\nd10 d4\nd10 c8\nc9 d3\nd7 a1\na2 d6\na12 e3\ne3 e4\ne4 e5\ne5 e6\ne6 a11\ne5 e7\ne7 c12\nc11 e10\ne10 e4\ne10 d2\nd1 e3\ne7 b1\nb2 e6\nc13 f3\nf3 f4\nf4 f5\nf5 f6\nf6 c14\nf5 f7\nf7 a13\na14 f10\nf10 f4\nf10 d8\nd9 f3\nf7 b9\nb8 f6',
         wheel: 'a1 a2\na2 a3\na3 a4\na4 a1\nb1 b2\nb2 b3\nb3 b4\nb4 b1\nc1 c2\nc2 c3\nc3 c4\nc4 c1\nd1 d2\nd2 d3\nd3 d4\nd4 d1\ne1 e2\ne2 e3\ne3 e4\ne4 e1\nf1 f2\nf2 f3\nf3 f4\nf4 f1\ng1 g2\ng2 g3\ng3 g4\ng4 g1\nh1 h2\nh2 h3\nh3 h4\nh4 h1\ni1 i2\ni2 i3\ni3 i4\ni4 i1\nj1 j2\nj2 j3\nj3 j4\nj4 j1\nk1 k2\nk2 k3\nk3 k4\nk4 k1\nl1 l2\nl2 l3\nl3 l4\nl4 l1\na1 b1\na2 b2\na3 b3\na4 b4\nb1 c1\nb2 c2\nb3 c3\nb4 c4\nc1 d1\nc2 d2\nc3 d3\nc4 d4\nd1 e1\nd2 e2\nd3 e3\nd4 e4\ne1 f1\ne2 f2\ne3 f3\ne4 f4\nf1 g1\nf2 g2\nf3 g3\nf4 g4\ng1 h1\ng2 h2\ng3 h3\ng4 h4\nh1 i1\nh2 i2\nh3 i3\nh4 i4\ni1 j1\ni2 j2\ni3 j3\ni4 j4\nj1 k1\nj2 k2\nj3 k3\nj4 k4\nk1 l1\nk2 l2\nk3 l3\nk4 l4\nl1 a1\nl2 a2\nl3 a3\nl4 a4',
         c2h6: 'c1 h1\nc1 h2\nc1 h3\nc1 c2\nc2 h4\nc2 h5\nc2 h6',
         cube: 'a1 a2\na2 a3\na3 a4\na4 a1\nb1 b2\nb2 b3\nb3 b4\nb4 b1\na1 b1\na2 b2\na3 b3\na4 b4'
@@ -82,6 +83,7 @@
           <div>
             Select structure 
             <select id="e" onchange="select_struct(this)">
+              <option value="fulereno2">Fulereno (agora sim!)</option>
               <option value="fulereno">Fulereno (sqn)</option>
               <option value="wheel">wheel</option>
               <option value="c2h6">c2h6</option>
